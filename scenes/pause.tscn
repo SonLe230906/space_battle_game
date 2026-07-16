@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://b0ngeac4s264e"]
+
+[ext_resource type="Script" uid="uid://y87530yloqqv" path="res://scripts/pause.gd" id="1_8u653"]
+[ext_resource type="PackedScene" uid="uid://m4l1uxer0f3r" path="res://scenes/settings_hud.tscn" id="2_05lnj"]
+[ext_resource type="Texture2D" uid="uid://b26s34hohpd7t" path="res://assets/upgrade-hud.png" id="2_8u653"]
+[ext_resource type="Texture2D" uid="uid://cqavddtt4eq60" path="res://assets/button/long_button.png" id="3_bwtow"]
+[ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="4_05lnj"]
+[ext_resource type="PackedScene" uid="uid://dgwwqv1bqydtj" path="res://scenes/button.tscn" id="4_bwtow"]
+[ext_resource type="FontFile" uid="uid://juy6bhrqwytt" path="res://assets/font/Space_Grotesk/static/SpaceGrotesk-Bold.ttf" id="7_jg8ls"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sm75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8u653")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05lnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jg8ls"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u063c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56vcw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0a22"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w2ufp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_21xor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1xvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o8bi2"]
+
+[node name="Pause Menu" type="Node2D" unique_id=735959461]
+process_mode = 2
+script = ExtResource("1_8u653")
+settings_scene = ExtResource("2_05lnj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=569274053]
+z_index = 4096
+position = Vector2(360, 525)
+scale = Vector2(1, 0.65)
+sprite_frames = SubResource("SpriteFrames_8sm75")
+
+[node name="Label" type="Label" parent="." unique_id=600213847]
+z_index = 4096
+offset_left = 96.0
+offset_top = 306.0
+offset_right = 624.0
+offset_bottom = 354.0
+theme_override_colors/font_shadow_color = Color(0, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_05lnj")
+theme_override_font_sizes/font_size = 48
+text = "Game Paused"
+
+[node name="ContinueButton" parent="." unique_id=1928625574 instance=ExtResource("4_bwtow")]
+z_index = 4096
+offset_left = 160.0
+offset_top = 400.0
+offset_right = 392.0
+offset_bottom = 440.0
+scale = Vector2(1.75, 1.75)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_05lnj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jg8ls")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u063c")
+icon = ExtResource("3_bwtow")
+
+[node name="Label2" type="Label" parent="ContinueButton" unique_id=366304265]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.000145
+offset_right = 64.0
+offset_bottom = 15.999855
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_jg8ls")
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+horizontal_alignment = 1
+
+[node name="SettingButton" parent="." unique_id=1109008136 instance=ExtResource("4_bwtow")]
+z_index = 4096
+offset_left = 160.0
+offset_top = 500.0
+offset_right = 392.0
+offset_bottom = 540.0
+scale = Vector2(1.75, 1.75)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56vcw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m0a22")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w2ufp")
+icon = ExtResource("3_bwtow")
+
+[node name="Label2" type="Label" parent="SettingButton" unique_id=374479485]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -11.500116
+offset_right = 64.0
+offset_bottom = 11.499886
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_jg8ls")
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="QuitButton" parent="." unique_id=1379035429 instance=ExtResource("4_bwtow")]
+z_index = 4096
+offset_left = 160.0
+offset_top = 600.0
+offset_right = 392.0
+offset_bottom = 640.0
+scale = Vector2(1.75, 1.75)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_21xor")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a1xvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o8bi2")
+icon = ExtResource("3_bwtow")
+
+[node name="Label2" type="Label" parent="QuitButton" unique_id=995430194]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.14285
+offset_top = -17.142998
+offset_right = 62.857147
+offset_bottom = 14.857002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_jg8ls")
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

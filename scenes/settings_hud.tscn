@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://m4l1uxer0f3r"]
+
+[ext_resource type="Script" uid="uid://b2m1q8iq7c084" path="res://scripts/settings_hud.gd" id="1_d4y87"]
+[ext_resource type="Texture2D" uid="uid://b26s34hohpd7t" path="res://assets/upgrade-hud.png" id="1_pl71q"]
+[ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="2_2q8ok"]
+[ext_resource type="PackedScene" uid="uid://dgwwqv1bqydtj" path="res://scenes/button.tscn" id="3_5k83x"]
+[ext_resource type="Texture2D" uid="uid://cqavddtt4eq60" path="res://assets/button/long_button.png" id="4_0bd2s"]
+[ext_resource type="FontFile" uid="uid://juy6bhrqwytt" path="res://assets/font/Space_Grotesk/static/SpaceGrotesk-Bold.ttf" id="5_0bd2s"]
+[ext_resource type="Texture2D" uid="uid://bjcwmp0syv84n" path="res://assets/button/button_1.png" id="7_q3osx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05lnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cp0l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2t1y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q3osx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fbqpd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ej3vu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_plp24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qa43k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqjhm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3ar4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy50b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mldj"]
+
+[node name="SettingsHUD" type="Node2D" unique_id=1970718357]
+process_mode = 3
+z_index = 4096
+script = ExtResource("1_d4y87")
+
+[node name="HUD" type="Sprite2D" parent="." unique_id=1196344162]
+position = Vector2(360, 525)
+scale = Vector2(1, 0.65)
+texture = ExtResource("1_pl71q")
+
+[node name="Label" type="Label" parent="." unique_id=1907093445]
+offset_left = 173.0
+offset_top = 304.0
+offset_right = 557.0
+offset_bottom = 352.0
+theme_override_colors/font_shadow_color = Color(0, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("2_2q8ok")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="Difficulty" parent="." unique_id=1928625574 instance=ExtResource("3_5k83x")]
+offset_left = 160.0
+offset_top = 400.0
+offset_right = 392.00006
+offset_bottom = 440.0
+scale = Vector2(1.75, 1.75)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_05lnj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0cp0l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d2t1y")
+icon = ExtResource("4_0bd2s")
+
+[node name="Label" type="Label" parent="Difficulty" unique_id=178557542]
+layout_mode = 0
+offset_left = 57.142868
+offset_top = 8.571426
+offset_right = 174.14287
+offset_bottom = 31.571426
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_0bd2s")
+text = "Difficulty: Easy"
+
+[node name="ShowIndicator" parent="." unique_id=1118052154 instance=ExtResource("3_5k83x")]
+offset_left = 160.0
+offset_top = 500.0
+offset_right = 392.00006
+offset_bottom = 540.0
+scale = Vector2(1.75, 1.75)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q3osx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fbqpd")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ej3vu")
+icon = ExtResource("4_0bd2s")
+
+[node name="Label" type="Label" parent="ShowIndicator" unique_id=148573704]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 8.571426
+offset_right = 192.0
+offset_bottom = 31.571434
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_0bd2s")
+text = "Show Indicator: Off"
+horizontal_alignment = 1
+
+[node name="Sound" parent="." unique_id=775515143 instance=ExtResource("3_5k83x")]
+offset_left = 160.0
+offset_top = 600.0
+offset_right = 392.00006
+offset_bottom = 640.0
+scale = Vector2(1.75, 1.75)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_plp24")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qa43k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vqjhm")
+icon = ExtResource("4_0bd2s")
+
+[node name="Label" type="Label" parent="Sound" unique_id=1472879173]
+layout_mode = 0
+offset_left = 57.142868
+offset_top = 8.571426
+offset_right = 172.14287
+offset_bottom = 31.571434
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_0bd2s")
+text = "Sound: On"
+horizontal_alignment = 1
+
+[node name="Exit" parent="." unique_id=741742379 instance=ExtResource("3_5k83x")]
+offset_left = 574.0
+offset_top = 350.0
+offset_right = 646.0
+offset_bottom = 422.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r3ar4")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iy50b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4mldj")
+icon = ExtResource("7_q3osx")
+
+[connection signal="pressed" from="Difficulty" to="." method="_on_difficulty_pressed"]
+[connection signal="pressed" from="ShowIndicator" to="." method="_on_show_indicator_pressed"]
+[connection signal="pressed" from="Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,566 @@
+[gd_scene format=3 uid="uid://cmx228wd171hb"]
+
+[ext_resource type="Script" uid="uid://b6nvalu7iode7" path="res://scripts/menu_hud.gd" id="1_78vby"]
+[ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="2_wngof"]
+[ext_resource type="Texture2D" uid="uid://b26s34hohpd7t" path="res://assets/upgrade-hud.png" id="3_6wufr"]
+[ext_resource type="Texture2D" uid="uid://cxr0gmjqhsn0t" path="res://assets/logo_upgrade/heart.png" id="4_qg4lh"]
+[ext_resource type="Texture2D" uid="uid://yc51rd137p3k" path="res://assets/progress_bar/sprite_0.png" id="5_imgpo"]
+[ext_resource type="Texture2D" uid="uid://3vvwyfm77gny" path="res://assets/progress_bar/sprite_1.png" id="6_6wufr"]
+[ext_resource type="Texture2D" uid="uid://csakbmrv55nss" path="res://assets/button/button_0.png" id="7_js7x3"]
+[ext_resource type="Texture2D" uid="uid://ceeaueilip1dt" path="res://assets/coin/coin_0.png" id="8_k5733"]
+[ext_resource type="Texture2D" uid="uid://bl5sdx1a8qs2c" path="res://assets/logo_upgrade/bullet_buff.png" id="9_o4vs5"]
+[ext_resource type="Texture2D" uid="uid://drfjt2vq64t60" path="res://assets/logo_upgrade/bullet_add.png" id="10_nwtks"]
+[ext_resource type="Texture2D" uid="uid://lyi1recbnovk" path="res://assets/logo_upgrade/crit_rate.png" id="11_cmnrx"]
+[ext_resource type="Texture2D" uid="uid://c5rddlj55dj5a" path="res://assets/logo_upgrade/crit_damage.png" id="12_5lhmt"]
+[ext_resource type="Texture2D" uid="uid://di0tujy1hlq7i" path="res://assets/logo_upgrade/speed.png" id="13_p5e2r"]
+[ext_resource type="Texture2D" uid="uid://boll6id41wjv0" path="res://assets/logo_upgrade/healing_rate.png" id="14_v2xx8"]
+[ext_resource type="Texture2D" uid="uid://glu8goh38fno" path="res://assets/coin_update/sprite_3.png" id="15_5uhpi"]
+[ext_resource type="Texture2D" uid="uid://bjcwmp0syv84n" path="res://assets/button/button_1.png" id="16_ypsjw"]
+[ext_resource type="AudioStream" uid="uid://utqtmpwimw0l" path="res://assets/audio/hover_2.wav" id="17_6wufr"]
+[ext_resource type="PackedScene" uid="uid://dgwwqv1bqydtj" path="res://scenes/button.tscn" id="18_imgpo"]
+[ext_resource type="AudioStream" uid="uid://bqwd13mowi3u3" path="res://assets/audio/failed.wav" id="19_imgpo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78vby"]
+size = Vector2(631, 883.9575)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqh8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6wufr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lesld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qg4lh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01l6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_k5733")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_usf7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_o4vs5")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojnjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_nwtks")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amonw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cmnrx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbg07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_5lhmt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5nqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_p5e2r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xr05f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_v2xx8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sm75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_5uhpi")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Area2D" unique_id=622030059]
+position = Vector2(360, 540)
+scale = Vector2(1.1, 1.1)
+script = ExtResource("1_78vby")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1431059618]
+shape = SubResource("RectangleShape2D_78vby")
+
+[node name="Label" type="Label" parent="." unique_id=1659243104]
+offset_left = -123.0
+offset_top = -422.0
+offset_right = 389.0
+offset_bottom = -358.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 32
+text = "UPGRADES"
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" type="AnimatedSprite2D" parent="." unique_id=593555277]
+scale = Vector2(1.2, 1.5)
+sprite_frames = SubResource("SpriteFrames_gqh8t")
+
+[node name="HP" type="Node" parent="." unique_id=1927141114]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HP" unique_id=406968011]
+position = Vector2(140, 200)
+scale = Vector2(1.8124998, 1.8124998)
+sprite_frames = SubResource("SpriteFrames_lesld")
+
+[node name="Label" type="Label" parent="HP" unique_id=973020441]
+offset_left = 185.0
+offset_top = 175.0
+offset_right = 225.0
+offset_bottom = 198.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.15686275, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "HP"
+
+[node name="HP_Upgrade_Bar" type="TextureProgressBar" parent="HP" unique_id=709304361]
+offset_left = 180.0
+offset_top = 200.0
+offset_right = 563.0
+offset_bottom = 240.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="HP_Button" parent="HP" unique_id=1928625574 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 175.0
+offset_right = 657.0
+offset_bottom = 247.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node" type="Node" parent="HP" unique_id=557616612]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HP/Node" unique_id=740289833]
+position = Vector2(500, 281)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="HP_Label" type="Label" parent="HP/Node" unique_id=1191422732]
+offset_left = 520.0
+offset_top = 172.0
+offset_right = 560.0
+offset_bottom = 195.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Fire_Rate" type="Node" parent="." unique_id=1628181448]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fire_Rate" unique_id=1564692666]
+position = Vector2(140, 300)
+sprite_frames = SubResource("SpriteFrames_usf7v")
+
+[node name="Label" type="Label" parent="Fire_Rate" unique_id=334102622]
+offset_left = 185.0
+offset_top = 275.0
+offset_right = 329.0
+offset_bottom = 298.0
+theme_override_colors/font_shadow_color = Color(1, 0.5529412, 0, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "Fire Rate"
+
+[node name="Fire_Rate_Upgrade_Bar" type="TextureProgressBar" parent="Fire_Rate" unique_id=491488502]
+offset_left = 180.0
+offset_top = 300.0
+offset_right = 563.0
+offset_bottom = 340.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Fire_Rate_Button" parent="Fire_Rate" unique_id=123108596 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 275.0
+offset_right = 657.0
+offset_bottom = 347.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node2" type="Node" parent="Fire_Rate" unique_id=549052890]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fire_Rate/Node2" unique_id=1604670643]
+position = Vector2(500, 181)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Fire_Rate/Node2" unique_id=2044907906]
+offset_left = 520.0
+offset_top = 272.0
+offset_right = 560.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Bullet_Damage" type="Node" parent="." unique_id=2061437451]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bullet_Damage" unique_id=1148326333]
+position = Vector2(140, 400)
+sprite_frames = SubResource("SpriteFrames_ojnjo")
+
+[node name="Label" type="Label" parent="Bullet_Damage" unique_id=566926070]
+offset_left = 185.0
+offset_top = 375.0
+offset_right = 393.0
+offset_bottom = 398.0
+theme_override_colors/font_shadow_color = Color(1, 0.5529412, 0, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "Bullet Damage"
+
+[node name="Bullet_Damage_Upgrade_Bar" type="TextureProgressBar" parent="Bullet_Damage" unique_id=1497655945]
+offset_left = 180.0
+offset_top = 400.0
+offset_right = 563.0
+offset_bottom = 440.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Bullet_Damage_Button" parent="Bullet_Damage" unique_id=1206748380 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 375.0
+offset_right = 657.0
+offset_bottom = 447.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node3" type="Node" parent="Bullet_Damage" unique_id=1046990053]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bullet_Damage/Node3" unique_id=711209292]
+position = Vector2(500, 381)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Bullet_Damage/Node3" unique_id=1083324738]
+offset_left = 520.0
+offset_top = 372.0
+offset_right = 560.0
+offset_bottom = 395.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Crit_Rate" type="Node" parent="." unique_id=1713334823]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crit_Rate" unique_id=908753083]
+position = Vector2(140, 500)
+sprite_frames = SubResource("SpriteFrames_amonw")
+
+[node name="Label" type="Label" parent="Crit_Rate" unique_id=671082663]
+offset_left = 185.0
+offset_top = 475.0
+offset_right = 393.0
+offset_bottom = 498.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0.15686275, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "Critical Rate"
+
+[node name="Crit_Rate_Upgrade_Bar" type="TextureProgressBar" parent="Crit_Rate" unique_id=298228243]
+offset_left = 180.0
+offset_top = 500.0
+offset_right = 563.0
+offset_bottom = 540.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Crit_Rate_Button" parent="Crit_Rate" unique_id=1150666571 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 475.0
+offset_right = 657.0
+offset_bottom = 547.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node4" type="Node" parent="Crit_Rate" unique_id=1979764638]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crit_Rate/Node4" unique_id=1851766588]
+position = Vector2(500, 481)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Crit_Rate/Node4" unique_id=518425753]
+offset_left = 520.0
+offset_top = 472.0
+offset_right = 560.0
+offset_bottom = 495.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Crit_Damage" type="Node" parent="." unique_id=736446315]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crit_Damage" unique_id=727504959]
+position = Vector2(140, 600)
+sprite_frames = SubResource("SpriteFrames_kbg07")
+
+[node name="Label" type="Label" parent="Crit_Damage" unique_id=1859643193]
+offset_left = 185.0
+offset_top = 575.0
+offset_right = 425.0
+offset_bottom = 598.0
+theme_override_colors/font_shadow_color = Color(1, 0, 0.15686275, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "Critical Damage"
+
+[node name="Crit_Damage_Upgrade_Bar" type="TextureProgressBar" parent="Crit_Damage" unique_id=256555631]
+offset_left = 180.0
+offset_top = 600.0
+offset_right = 563.0
+offset_bottom = 640.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Crit_Damage_Button" parent="Crit_Damage" unique_id=344837558 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 575.0
+offset_right = 657.0
+offset_bottom = 647.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node5" type="Node" parent="Crit_Damage" unique_id=772899487]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crit_Damage/Node5" unique_id=798645027]
+position = Vector2(500, 581)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Crit_Damage/Node5" unique_id=954360075]
+offset_left = 520.0
+offset_top = 572.0
+offset_right = 560.0
+offset_bottom = 595.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Speed" type="Node" parent="." unique_id=1905303508]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Speed" unique_id=1073272991]
+position = Vector2(140, 700)
+sprite_frames = SubResource("SpriteFrames_f5nqs")
+
+[node name="Label" type="Label" parent="Speed" unique_id=1775539741]
+offset_left = 185.0
+offset_top = 675.0
+offset_right = 265.0
+offset_bottom = 698.0
+theme_override_colors/font_shadow_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "Speed"
+
+[node name="Speed_Upgrade_Bar" type="TextureProgressBar" parent="Speed" unique_id=1599802819]
+offset_left = 180.0
+offset_top = 700.0
+offset_right = 563.0
+offset_bottom = 740.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Speed_Button" parent="Speed" unique_id=2003437275 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 675.0
+offset_right = 657.0
+offset_bottom = 747.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node6" type="Node" parent="Speed" unique_id=1264020602]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Speed/Node6" unique_id=2121971211]
+position = Vector2(500, 681)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Speed/Node6" unique_id=984873455]
+offset_left = 520.0
+offset_top = 672.0
+offset_right = 560.0
+offset_bottom = 695.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Healing_Rate" type="Node" parent="." unique_id=1091089327]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing_Rate" unique_id=1883823953]
+position = Vector2(140, 800)
+scale = Vector2(1.812, 1.812)
+sprite_frames = SubResource("SpriteFrames_xr05f")
+
+[node name="Label" type="Label" parent="Healing_Rate" unique_id=296284676]
+offset_left = 185.0
+offset_top = 775.0
+offset_right = 377.0
+offset_bottom = 798.0
+theme_override_colors/font_shadow_color = Color(0, 0.65060985, 0.15868887, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+text = "Healing Rate"
+
+[node name="Healing_Rate_Upgrade_Bar" type="TextureProgressBar" parent="Healing_Rate" unique_id=1847002850]
+offset_left = 180.0
+offset_top = 800.0
+offset_right = 563.0
+offset_bottom = 840.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Healing_Rate_Button" parent="Healing_Rate" unique_id=338458886 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 775.0
+offset_right = 657.0
+offset_bottom = 847.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node7" type="Node" parent="Healing_Rate" unique_id=1037293390]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing_Rate/Node7" unique_id=2115059695]
+position = Vector2(500, 781)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Healing_Rate/Node7" unique_id=639845349]
+offset_left = 520.0
+offset_top = 772.0
+offset_right = 560.0
+offset_bottom = 795.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Coin_Multiplier" type="Node" parent="." unique_id=1369335693]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin_Multiplier" unique_id=1242152863]
+position = Vector2(140, 900)
+scale = Vector2(1.812, 1.812)
+sprite_frames = SubResource("SpriteFrames_8sm75")
+
+[node name="Label" type="Label" parent="Coin_Multiplier" unique_id=1564474475]
+offset_left = 185.0
+offset_top = 875.0
+offset_right = 425.0
+offset_bottom = 898.0
+theme_override_colors/font_shadow_color = Color(0.89411765, 0.8509804, 0, 1)
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 16
+text = "Coin Multiplier"
+
+[node name="Coin_Multiplier_Upgrade_Bar" type="TextureProgressBar" parent="Coin_Multiplier" unique_id=276702850]
+offset_left = 180.0
+offset_top = 900.0
+offset_right = 563.0
+offset_bottom = 940.0
+texture_under = ExtResource("5_imgpo")
+texture_progress = ExtResource("6_6wufr")
+
+[node name="Coin_Multiplier_Button" parent="Coin_Multiplier" unique_id=570623789 instance=ExtResource("18_imgpo")]
+offset_left = 585.0
+offset_top = 875.0
+offset_right = 657.0
+offset_bottom = 947.0
+scale = Vector2(0.75, 0.75)
+icon = ExtResource("7_js7x3")
+
+[node name="Node8" type="Node" parent="Coin_Multiplier" unique_id=1412029814]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin_Multiplier/Node8" unique_id=722117481]
+position = Vector2(500, 881)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_01l6g")
+
+[node name="Label" type="Label" parent="Coin_Multiplier/Node8" unique_id=2117867898]
+offset_left = 520.0
+offset_top = 872.0
+offset_right = 560.0
+offset_bottom = 895.0
+theme_override_fonts/font = ExtResource("2_wngof")
+theme_override_font_sizes/font_size = 20
+text = "1	"
+
+[node name="Timer2" type="Timer" parent="." unique_id=890393460]
+wait_time = 1.059
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="." unique_id=914411616]
+stream = ExtResource("17_6wufr")
+
+[node name="ExitButton" parent="." unique_id=1709082341 instance=ExtResource("18_imgpo")]
+offset_left = 260.0
+offset_top = -389.09088
+offset_right = 332.0
+offset_bottom = -317.09088
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("16_ypsjw")
+
+[node name="Failed" type="AudioStreamPlayer2D" parent="." unique_id=1640320136]
+stream = ExtResource("19_imgpo")
+volume_db = 10.0
+
+[connection signal="pressed" from="HP/HP_Button" to="." method="_on_hp_button_pressed"]
+[connection signal="pressed" from="Fire_Rate/Fire_Rate_Button" to="." method="_on_fire_rate_button_pressed"]
+[connection signal="pressed" from="Bullet_Damage/Bullet_Damage_Button" to="." method="_on_bullet_damage_button_pressed"]
+[connection signal="pressed" from="Crit_Rate/Crit_Rate_Button" to="." method="_on_crit_rate_button_pressed"]
+[connection signal="pressed" from="Crit_Damage/Crit_Damage_Button" to="." method="_on_crit_damage_button_pressed"]
+[connection signal="pressed" from="Speed/Speed_Button" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="Healing_Rate/Healing_Rate_Button" to="." method="_on_healing_rate_button_pressed"]
+[connection signal="pressed" from="Coin_Multiplier/Coin_Multiplier_Button" to="." method="_on_coin_multiplier_button_pressed"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

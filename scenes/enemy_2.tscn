@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://qpuptmb00yrn"]
+
+[ext_resource type="Script" uid="uid://dwv4eh1ibal6j" path="res://scripts/enemy_2.gd" id="1_n88sx"]
+[ext_resource type="PackedScene" uid="uid://v4jx3bdyy2ga" path="res://scenes/indicator.tscn" id="2_bbuvh"]
+[ext_resource type="Texture2D" uid="uid://d1lmfosfo52ud" path="res://assets/enemy_plane/red_area.png" id="3_7v7lw"]
+[ext_resource type="Texture2D" uid="uid://bsi4mjalir6sa" path="res://assets/enemy_plane/enemy_2_1.png" id="4_c8vbn"]
+[ext_resource type="Texture2D" uid="uid://dn0sul0mhm4mu" path="res://assets/enemy_plane/enemy_2_2.png" id="5_3eqed"]
+[ext_resource type="Texture2D" uid="uid://d0aciqd4ks38t" path="res://assets/enemy_plane/enemy_2_3.png" id="6_smvsi"]
+[ext_resource type="Texture2D" uid="uid://8m1rhom0km3q" path="res://assets/enemy_plane/enemy_2_4.png" id="7_7bwrd"]
+[ext_resource type="Texture2D" uid="uid://16qdq8snb5fn" path="res://assets/enemy_plane/enemy_2_5.png" id="8_6do3i"]
+[ext_resource type="Texture2D" uid="uid://dx3emqjkiri5s" path="res://assets/enemy_plane/enemy_2_6.png" id="9_qjnyp"]
+[ext_resource type="Texture2D" uid="uid://bpms2g88obhiv" path="res://assets/enemy_plane/enemy_2_7.png" id="10_1jmet"]
+[ext_resource type="Texture2D" uid="uid://cttsunv2dbobg" path="res://assets/enemy_plane/enemy_2_8.png" id="11_r53gs"]
+[ext_resource type="Texture2D" uid="uid://by15umqsya63q" path="res://assets/health-bar/sprite_0.png" id="12_772e2"]
+[ext_resource type="Texture2D" uid="uid://cxmtmm12uwrx7" path="res://assets/health-bar/sprite_1.png" id="13_0atp2"]
+[ext_resource type="AudioStream" uid="uid://crlh50g3ybb4u" path="res://assets/audio/damaged_2.wav" id="14_a86bm"]
+[ext_resource type="AudioStream" uid="uid://82bqlxewqso1" path="res://assets/audio/small_explosion.wav" id="15_phn6v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sm75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_c8vbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3eqed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_smvsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7bwrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6do3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qjnyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1jmet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r53gs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1jmet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qjnyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6do3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7bwrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_smvsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3eqed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c8vbn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy_2" type="Area2D" unique_id=1651074323]
+disable_mode = 2
+script = ExtResource("1_n88sx")
+indicator = ExtResource("2_bbuvh")
+metadata/_edit_group_ = true
+
+[node name="Red_Area" type="Sprite2D" parent="." unique_id=887712223]
+modulate = Color(1, 1, 1, 0.4117647)
+position = Vector2(0, 519)
+texture = ExtResource("3_7v7lw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=654384090]
+sprite_frames = SubResource("SpriteFrames_8sm75")
+
+[node name="HitBox" type="CollisionPolygon2D" parent="." unique_id=778890324]
+position = Vector2(-1, -17)
+polygon = PackedVector2Array(0, -2, 1, -23, 4, -23, 13, -14, 14, -14, 16, -12, 17, -12, 19, -10, 23, -9, 26, -8, 30, -7, 34, -6, 39, -5, 41, -4, 40, -3, 37, 0, 29, 4, 19, 10, 15, 14, 9, 23, 7, 30, 6, 35, 5, 39, 4, 44, 4, 48, 3, 50, 3, 56, 0, 57, -1, 56, -1, 49, -2, 48, -2, 42, -3, 36, -4, 31, -6, 24, -13, 14, -17, 10, -39, -3, -36, -5, -20, -9, -12, -14, -6, -20, -2, -23, 1, -23)
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=2017598835]
+offset_left = -16.0
+offset_top = -62.0
+offset_right = 24.0
+offset_bottom = -22.0
+texture_under = ExtResource("12_772e2")
+texture_progress = ExtResource("13_0atp2")
+
+[node name="DelayFullSpeed" type="Timer" parent="." unique_id=1128413618]
+wait_time = 1.5
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="." unique_id=1367238921]
+stream = ExtResource("14_a86bm")
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="." unique_id=1889834641]
+stream = ExtResource("15_phn6v")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DelayFullSpeed" to="." method="_on_delay_full_speed_timeout"]

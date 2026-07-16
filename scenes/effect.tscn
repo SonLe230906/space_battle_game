@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://k30quxi05lfp"]
+
+[ext_resource type="Script" uid="uid://bgenidodmed8" path="res://scripts/effect.gd" id="1_emrr1"]
+[ext_resource type="Texture2D" uid="uid://c28c7og2f15as" path="res://assets/logo_upgrade/debuff_1.png" id="2_1bydw"]
+[ext_resource type="Texture2D" uid="uid://bl5sdx1a8qs2c" path="res://assets/logo_upgrade/bullet_buff.png" id="3_u3ras"]
+[ext_resource type="Texture2D" uid="uid://c2glvtnxpsfdk" path="res://assets/logo_upgrade/shield.png" id="4_84v0c"]
+[ext_resource type="Texture2D" uid="uid://di0tujy1hlq7i" path="res://assets/logo_upgrade/speed.png" id="5_dgiot"]
+[ext_resource type="Texture2D" uid="uid://d4fbbfqxr4yme" path="res://assets/logo_upgrade/effect_border.png" id="6_4cy61"]
+[ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="7_7id66"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sm75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1bydw")
+}],
+"loop": 1,
+"name": &"debuff",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u3ras")
+}],
+"loop": 1,
+"name": &"fire_rate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_84v0c")
+}],
+"loop": 1,
+"name": &"resistance",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dgiot")
+}],
+"loop": 1,
+"name": &"speed",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17hc2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4cy61")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Effect" type="Node2D" unique_id=186502256]
+script = ExtResource("1_emrr1")
+
+[node name="EffectSprite" type="AnimatedSprite2D" parent="." unique_id=277513149]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_8sm75")
+animation = &"debuff"
+
+[node name="Border" type="AnimatedSprite2D" parent="." unique_id=491958808]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_17hc2")
+
+[node name="EndEffect" type="Timer" parent="." unique_id=1679524953]
+
+[node name="Time" type="Label" parent="." unique_id=1614701350]
+offset_left = -28.0
+offset_top = 13.0
+offset_right = -12.0
+offset_bottom = 36.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("7_7id66")
+theme_override_font_sizes/font_size = 12
+text = "3"
+
+[node name="Multiplier" type="Label" parent="." unique_id=117353210]
+offset_left = -28.0
+offset_top = -30.0
+offset_right = 4.0
+offset_bottom = -11.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("7_7id66")
+theme_override_font_sizes/font_size = 12
+text = "x1"
+
+[connection signal="timeout" from="EndEffect" to="." method="_on_end_effect_timeout"]

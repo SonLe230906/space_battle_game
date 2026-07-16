@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bq05etp27jgi2"]
+
+[ext_resource type="Script" uid="uid://bgdy82nxardio" path="res://scripts/ufo_bullet.gd" id="1_ibbop"]
+[ext_resource type="Texture2D" uid="uid://divxcoux2wgds" path="res://assets/bullet/ufo_enemy_bullet.png" id="2_q8wq8"]
+
+[node name="Area2D" type="Area2D" unique_id=62057508]
+script = ExtResource("1_ibbop")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1517225382]
+texture = ExtResource("2_q8wq8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=686669414]
+scale = Vector2(1.07, 1.003)
+polygon = PackedVector2Array(0, 0, 0, -2, 1, -2, 5, 2, 5, 4, 1, 8, 0, 8, -1, 8, -5, 3, -2, -1, -1, -2, 0, -2)

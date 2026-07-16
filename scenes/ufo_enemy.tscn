@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://f8174mlutbll"]
+
+[ext_resource type="Script" uid="uid://ce57c1ni78nj" path="res://scripts/ufo_enemy.gd" id="1_k7ea7"]
+[ext_resource type="PackedScene" uid="uid://v4jx3bdyy2ga" path="res://scenes/indicator.tscn" id="2_c4ca7"]
+[ext_resource type="PackedScene" uid="uid://bq05etp27jgi2" path="res://scenes/ufo_bullet.tscn" id="3_wnwcr"]
+[ext_resource type="Texture2D" uid="uid://ccl6cahx0w6so" path="res://assets/enemy_plane/enemy_3_1.png" id="4_ysbys"]
+[ext_resource type="Texture2D" uid="uid://cp87lq0yvr3g2" path="res://assets/enemy_plane/enemy_3_2.png" id="5_rspca"]
+[ext_resource type="Texture2D" uid="uid://bp5hw2dklovl1" path="res://assets/enemy_plane/enemy_3_3.png" id="6_1nmmw"]
+[ext_resource type="Texture2D" uid="uid://cclyork5otdx" path="res://assets/enemy_plane/enemy_3_4.png" id="7_f7l4l"]
+[ext_resource type="Texture2D" uid="uid://bixblmq41vpi8" path="res://assets/enemy_plane/enemy_3_5.png" id="8_mquaj"]
+[ext_resource type="Texture2D" uid="uid://by15umqsya63q" path="res://assets/health-bar/sprite_0.png" id="9_6iktj"]
+[ext_resource type="Texture2D" uid="uid://cxmtmm12uwrx7" path="res://assets/health-bar/sprite_1.png" id="10_g00ob"]
+[ext_resource type="AudioStream" uid="uid://crlh50g3ybb4u" path="res://assets/audio/damaged_2.wav" id="11_pxvy6"]
+[ext_resource type="AudioStream" uid="uid://82bqlxewqso1" path="res://assets/audio/small_explosion.wav" id="12_rb5dx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_784hk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ysbys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rspca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1nmmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f7l4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mquaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f7l4l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1nmmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rspca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rspca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rspca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ysbys")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lesld"]
+radius = 42.0
+height = 88.0
+
+[node name="UFO_Enemy" type="CharacterBody2D" unique_id=249964268]
+collision_layer = 2
+script = ExtResource("1_k7ea7")
+indicator = ExtResource("2_c4ca7")
+bullet_scene = ExtResource("3_wnwcr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=139770598]
+sprite_frames = SubResource("SpriteFrames_784hk")
+frame_progress = 0.14862394
+
+[node name="Area2D" type="Area2D" parent="." unique_id=104863926]
+
+[node name="HitBox" type="CollisionShape2D" parent="Area2D" unique_id=2025352154]
+shape = SubResource("CapsuleShape2D_lesld")
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1594167714]
+offset_left = -17.0
+offset_top = -62.0
+offset_right = 23.0
+offset_bottom = -22.0
+texture_under = ExtResource("9_6iktj")
+texture_progress = ExtResource("10_g00ob")
+
+[node name="EnemyFireRate" type="Timer" parent="." unique_id=1149407923]
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1530611356]
+shape = SubResource("CapsuleShape2D_lesld")
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="." unique_id=1918248837]
+stream = ExtResource("11_pxvy6")
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="." unique_id=1087260072]
+stream = ExtResource("12_rb5dx")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="EnemyFireRate" to="." method="_on_enemy_fire_rate_timeout"]

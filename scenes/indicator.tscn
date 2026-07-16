@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://v4jx3bdyy2ga"]
+
+[ext_resource type="Script" uid="uid://c8450q6qditi" path="res://scripts/indicator.gd" id="1_t3fs7"]
+[ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="2_dik84"]
+
+[node name="Area2D" type="Area2D" unique_id=217004288]
+script = ExtResource("1_t3fs7")
+
+[node name="Label" type="Label" parent="." unique_id=768823811]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_dik84")
+
+[node name="Timer" type="Timer" parent="." unique_id=1658482849]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

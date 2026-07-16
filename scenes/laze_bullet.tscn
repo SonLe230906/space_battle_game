@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dfitw5gcqhrk3"]
+
+[ext_resource type="Script" uid="uid://cmfalrqai7ujh" path="res://scripts/laze_bullet.gd" id="1_sr5a6"]
+[ext_resource type="Texture2D" uid="uid://cnukcky2ihlfa" path="res://assets/bullet/laze_bullet.png" id="2_t3rul"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqh8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t3rul")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8sm75"]
+radius = 3.0
+height = 36.0
+
+[node name="Laze_Bullet" type="Area2D" unique_id=902945531]
+script = ExtResource("1_sr5a6")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1277227442]
+scale = Vector2(1, 2.5)
+sprite_frames = SubResource("SpriteFrames_gqh8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=109751913]
+position = Vector2(-1, -10)
+shape = SubResource("CapsuleShape2D_8sm75")

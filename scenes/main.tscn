@@ -1,0 +1,388 @@
+[gd_scene format=3 uid="uid://cbw8i8l2h13wf"]
+
+[ext_resource type="Script" uid="uid://crekyf4x4vedh" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://de83hfw2spvjp" path="res://scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bangej362l1yj" path="res://scenes/bullet.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dcakkvt2af721" path="res://scenes/enemy.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://qpuptmb00yrn" path="res://scenes/enemy_2.tscn" id="4_ryguw"]
+[ext_resource type="PackedScene" uid="uid://3nsy72tvgpmu" path="res://scenes/collectable.tscn" id="4_w48qg"]
+[ext_resource type="PackedScene" uid="uid://f8174mlutbll" path="res://scenes/ufo_enemy.tscn" id="5_1u8w0"]
+[ext_resource type="PackedScene" uid="uid://bchnrbrho0pe7" path="res://scenes/boss_1.tscn" id="6_0odxb"]
+[ext_resource type="PackedScene" uid="uid://v4jx3bdyy2ga" path="res://scenes/indicator.tscn" id="7_074og"]
+[ext_resource type="PackedScene" uid="uid://dmr41j2uwex7y" path="res://scenes/laze_enemy.tscn" id="7_seu75"]
+[ext_resource type="Texture2D" uid="uid://d4migqvny3kes" path="res://assets/space/space_0.png" id="8_getpj"]
+[ext_resource type="PackedScene" uid="uid://k30quxi05lfp" path="res://scenes/effect.tscn" id="8_ryguw"]
+[ext_resource type="Texture2D" uid="uid://cdrc3bx3mxo38" path="res://assets/space/space_1.png" id="9_ryguw"]
+[ext_resource type="Texture2D" uid="uid://kkaqbw467jan" path="res://assets/space/space_2.png" id="10_d13ii"]
+[ext_resource type="Texture2D" uid="uid://bumra6q4phc35" path="res://assets/space/space_3.png" id="11_1u8w0"]
+[ext_resource type="Texture2D" uid="uid://bfehlpfjhahx8" path="res://assets/space/space_4.png" id="12_0odxb"]
+[ext_resource type="PackedScene" uid="uid://m4l1uxer0f3r" path="res://scenes/settings_hud.tscn" id="12_4lmeg"]
+[ext_resource type="Texture2D" uid="uid://dait4f438xc8h" path="res://assets/space/space_7.png" id="13_lswn8"]
+[ext_resource type="Texture2D" uid="uid://00q5jkmucpln" path="res://assets/space/space_6.png" id="14_a6jrf"]
+[ext_resource type="PackedScene" uid="uid://cmx228wd171hb" path="res://scenes/menu-hud.tscn" id="15_vivmo"]
+[ext_resource type="Texture2D" uid="uid://j6t6ss2vwdt5" path="res://assets/space/space_5.png" id="15_xuqvo"]
+[ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="17_ryguw"]
+[ext_resource type="PackedScene" uid="uid://b0ngeac4s264e" path="res://scenes/pause.tscn" id="17_yaehf"]
+[ext_resource type="Texture2D" uid="uid://bgauosc4h84dx" path="res://assets/button/button_2.png" id="18_getpj"]
+[ext_resource type="FontFile" uid="uid://juy6bhrqwytt" path="res://assets/font/Space_Grotesk/static/SpaceGrotesk-Bold.ttf" id="19_ryguw"]
+[ext_resource type="Texture2D" uid="uid://c6tp0myra3ana" path="res://assets/progress_bar/sprite_2.png" id="20_getpj"]
+[ext_resource type="Texture2D" uid="uid://ds6v43ewy4esf" path="res://assets/progress_bar/sprite_3.png" id="21_ryguw"]
+[ext_resource type="AudioStream" uid="uid://0p7d56b127fx" path="res://assets/audio/soundtrack_1.wav" id="35_0rl1p"]
+[ext_resource type="AudioStream" uid="uid://cwrkrdi2cf2m4" path="res://assets/audio/soundtrack_2.wav" id="36_ok6jj"]
+[ext_resource type="FontFile" uid="uid://cm4sm3voc3rql" path="res://assets/font/Space_Grotesk/static/SpaceGrotesk-Light.ttf" id="37_b1qrp"]
+[ext_resource type="AudioStream" uid="uid://cpcexl1dgp5rj" path="res://assets/audio/boss_1.wav" id="37_facbu"]
+[ext_resource type="AudioStream" uid="uid://82bqlxewqso1" path="res://assets/audio/small_explosion.wav" id="38_b1qrp"]
+[ext_resource type="PackedScene" uid="uid://dgwwqv1bqydtj" path="res://scenes/button.tscn" id="39_come4"]
+[ext_resource type="AudioStream" uid="uid://dyuysw1l3ttmc" path="res://assets/audio/buff.wav" id="39_h8e4i"]
+[ext_resource type="AudioStream" uid="uid://drg2ypktnbint" path="res://assets/audio/coins.wav" id="40_4lmeg"]
+[ext_resource type="AudioStream" uid="uid://utqtmpwimw0l" path="res://assets/audio/hover_2.wav" id="41_4lmeg"]
+[ext_resource type="AudioStream" uid="uid://ddxl2imejffum" path="res://assets/audio/completed.wav" id="42_0cp0l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqh8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_getpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ryguw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d13ii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1u8w0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0odxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lswn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_a6jrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_xuqvo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sm75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gqh8t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17hc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lesld"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqjhm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kn6a3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4lmeg"]
+
+[node name="Main" type="Node2D" unique_id=1852368581]
+script = ExtResource("1_h2yge")
+player_scene = ExtResource("1_ig7tw")
+bullet_scene = ExtResource("2_0xm2m")
+enemy_scene = ExtResource("3_1bvp3")
+enemy_2_scene = ExtResource("4_ryguw")
+ufo_enemy_scene = ExtResource("5_1u8w0")
+laze_enemy_scene = ExtResource("7_seu75")
+first_boss = ExtResource("6_0odxb")
+collectable_scene = ExtResource("4_w48qg")
+upgrade_menu = ExtResource("15_vivmo")
+pause_menu = ExtResource("17_yaehf")
+settings_menu = ExtResource("12_4lmeg")
+indicator = ExtResource("7_074og")
+effect = ExtResource("8_ryguw")
+wave_count = 9
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=376659282]
+position = Vector2(360, 539)
+sprite_frames = SubResource("SpriteFrames_gqh8t")
+
+[node name="PlayerScore" type="Label" parent="." unique_id=1772001468]
+z_index = 4096
+offset_left = 22.0
+offset_top = 70.0
+offset_right = 343.0
+offset_bottom = 101.0
+theme_override_colors/font_shadow_color = Color(0.20664802, 1, 0.9027716, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 24
+text = "Score: "
+
+[node name="EnemySpawn" type="Timer" parent="." unique_id=1673433461]
+wait_time = 2.5
+
+[node name="GameOver" type="Label" parent="." unique_id=255106243]
+offset_left = 75.0
+offset_top = 449.0
+offset_right = 651.0
+offset_bottom = 522.0
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="GameTitle" type="Label" parent="." unique_id=1475347561]
+offset_left = 55.0
+offset_top = 232.0
+offset_right = 679.0
+offset_bottom = 297.0
+theme_override_colors/font_shadow_color = Color(0.1882353, 0.13725491, 0.9098039, 1)
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 52
+text = "SPACE BATTLE"
+
+[node name="ShowTitle" type="Timer" parent="." unique_id=162314804]
+wait_time = 3.5
+
+[node name="Collectable" parent="." unique_id=1651058927 instance=ExtResource("4_w48qg")]
+z_index = 4096
+position = Vector2(41, 33)
+scale = Vector2(0.75, 0.75)
+
+[node name="AnnouncementLabel" type="Label" parent="." unique_id=910948745]
+z_index = 4096
+offset_left = 35.0
+offset_top = 500.0
+offset_right = 707.0
+offset_bottom = 567.0
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 24
+text = "Something crazy is coming..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NumberOfCoins" type="Label" parent="." unique_id=369922644]
+z_index = 4096
+offset_left = 67.0
+offset_top = 23.0
+offset_right = 107.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.93648744, 0.77413917, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="WaveCount" type="Label" parent="." unique_id=216216914]
+z_index = 4096
+offset_left = 450.0
+offset_top = 10.0
+offset_right = 526.0
+offset_bottom = 44.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("19_ryguw")
+theme_override_font_sizes/font_size = 24
+text = "Wave: "
+
+[node name="EnemyRemaining" type="Label" parent="." unique_id=2053186190]
+z_index = 4096
+offset_left = 450.0
+offset_top = 40.0
+offset_right = 580.0
+offset_bottom = 74.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("19_ryguw")
+theme_override_font_sizes/font_size = 24
+text = "Remaining:"
+
+[node name="BossName" type="Label" parent="." unique_id=1803762716]
+z_index = 4096
+offset_left = 239.0
+offset_top = 122.0
+offset_right = 495.0
+offset_bottom = 154.0
+theme_override_colors/font_shadow_color = Color(0.29803923, 0.45490196, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 32
+text = "The Boss"
+
+[node name="BossHealthBar" type="TextureProgressBar" parent="." unique_id=999509372]
+z_index = 4096
+offset_left = 80.0
+offset_top = 168.0
+offset_right = 463.0
+offset_bottom = 208.0
+scale = Vector2(1.5, 1.5)
+texture_under = ExtResource("20_getpj")
+texture_progress = ExtResource("21_ryguw")
+
+[node name="DelayBossSpawn" type="Timer" parent="." unique_id=978017205]
+wait_time = 5.0
+
+[node name="Wave_Delay" type="Timer" parent="." unique_id=1444052162]
+wait_time = 5.0
+
+[node name="EnemyEscape" type="Label" parent="." unique_id=379061008]
+z_index = 4096
+offset_left = 450.0
+offset_top = 70.0
+offset_right = 540.0
+offset_bottom = 102.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("19_ryguw")
+theme_override_font_sizes/font_size = 24
+text = "Escape:"
+
+[node name="Return_Fire_Rate" type="Timer" parent="." unique_id=2125950564]
+wait_time = 2.928
+
+[node name="Return_Resistance" type="Timer" parent="." unique_id=1621864600]
+wait_time = 5.0
+
+[node name="Return_Speed" type="Timer" parent="." unique_id=1981623830]
+wait_time = 10.0
+
+[node name="Soundtrack_1" type="AudioStreamPlayer2D" parent="." unique_id=944275006]
+process_mode = 3
+stream = ExtResource("35_0rl1p")
+autoplay = true
+
+[node name="Soundtrack_2" type="AudioStreamPlayer2D" parent="." unique_id=646767546]
+stream = ExtResource("36_ok6jj")
+volume_db = -5.0
+
+[node name="BossSoundTrack_1" type="AudioStreamPlayer2D" parent="." unique_id=1082950824]
+stream = ExtResource("37_facbu")
+volume_db = 1.0
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="." unique_id=1093030036]
+stream = ExtResource("38_b1qrp")
+pitch_scale = 0.25
+
+[node name="BuffSound" type="AudioStreamPlayer2D" parent="." unique_id=832442445]
+stream = ExtResource("39_h8e4i")
+volume_db = 10.0
+
+[node name="CoinSound" type="AudioStreamPlayer2D" parent="." unique_id=254807603]
+stream = ExtResource("40_4lmeg")
+volume_db = 5.0
+
+[node name="HoverSound_2" type="AudioStreamPlayer2D" parent="." unique_id=1597125751]
+stream = ExtResource("41_4lmeg")
+
+[node name="Completed" type="AudioStreamPlayer2D" parent="." unique_id=1673552253]
+stream = ExtResource("42_0cp0l")
+volume_db = 20.0
+
+[node name="Play" parent="." unique_id=1952302425 instance=ExtResource("39_come4")]
+offset_left = 55.0
+offset_top = 500.0
+offset_right = 247.0
+offset_bottom = 548.0
+theme_override_colors/font_pressed_color = Color(0, 0.5019608, 0.5019608, 1)
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8sm75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gqh8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_17hc2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lesld")
+text = "Play"
+
+[node name="Upgrade" parent="." unique_id=1928625574 instance=ExtResource("39_come4")]
+offset_left = 55.0
+offset_top = 600.0
+offset_right = 391.0
+offset_bottom = 648.0
+theme_override_colors/font_pressed_color = Color(0, 0.50209415, 0.50209415, 1)
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0.9490196, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8sm75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gqh8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_17hc2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lesld")
+text = "Upgrade"
+
+[node name="Settings" parent="." unique_id=1963869187 instance=ExtResource("39_come4")]
+offset_left = 55.0
+offset_top = 700.0
+offset_right = 247.0
+offset_bottom = 748.0
+theme_override_colors/font_pressed_color = Color(0, 0.5019608, 0.5019608, 1)
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8sm75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gqh8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_17hc2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lesld")
+text = "Settings"
+
+[node name="Exit" parent="." unique_id=1673550282 instance=ExtResource("39_come4")]
+offset_left = 55.0
+offset_top = 800.0
+offset_right = 247.0
+offset_bottom = 848.0
+theme_override_colors/font_pressed_color = Color(0, 0.5019608, 0.5019608, 1)
+theme_override_colors/font_hover_color = Color(0, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("17_ryguw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8sm75")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gqh8t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_17hc2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lesld")
+text = "Exit"
+
+[node name="PauseButton" parent="." unique_id=2095062859 instance=ExtResource("39_come4")]
+process_mode = 3
+z_index = 4096
+offset_left = 627.0
+offset_top = 20.0
+offset_right = 699.0
+offset_bottom = 92.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vqjhm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kn6a3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4lmeg")
+icon = ExtResource("18_getpj")
+
+[node name="Credit" type="Label" parent="." unique_id=429650290]
+offset_left = 419.0
+offset_top = 1040.0
+offset_right = 709.0
+offset_bottom = 1066.0
+theme_override_fonts/font = ExtResource("37_b1qrp")
+theme_override_font_sizes/font_size = 20
+text = "Made by Son Le - Version 1.0.0"
+
+[connection signal="timeout" from="EnemySpawn" to="." method="_on_enemy_spawn_timeout"]
+[connection signal="timeout" from="ShowTitle" to="." method="_on_show_title_timeout"]
+[connection signal="timeout" from="DelayBossSpawn" to="." method="_on_delay_boss_spawn_timeout"]
+[connection signal="timeout" from="Wave_Delay" to="." method="_on_wave_delay_timeout"]
+[connection signal="timeout" from="Return_Fire_Rate" to="." method="_on_return_fire_rate_timeout"]
+[connection signal="timeout" from="Return_Resistance" to="." method="_on_return_resistance_timeout"]
+[connection signal="timeout" from="Return_Speed" to="." method="_on_return_speed_timeout"]
+[connection signal="finished" from="Soundtrack_1" to="." method="_on_soundtrack_1_finished"]
+[connection signal="finished" from="Soundtrack_2" to="." method="_on_soundtrack_2_finished"]
+[connection signal="finished" from="BossSoundTrack_1" to="." method="_on_boss_sound_track_1_finished"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_pressed"]

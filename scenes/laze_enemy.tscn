@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dmr41j2uwex7y"]
+
+[ext_resource type="Script" uid="uid://cnbux4c4sfgxt" path="res://scripts/laze_enemy.gd" id="1_inkma"]
+[ext_resource type="PackedScene" uid="uid://v4jx3bdyy2ga" path="res://scenes/indicator.tscn" id="2_o0xun"]
+[ext_resource type="PackedScene" uid="uid://dfitw5gcqhrk3" path="res://scenes/laze_bullet.tscn" id="3_2hdfn"]
+[ext_resource type="Texture2D" uid="uid://bf1w487r0u30w" path="res://assets/laze_enemy/laze_enemy_1.png" id="4_5ag8j"]
+[ext_resource type="Texture2D" uid="uid://clr224l1d2kyx" path="res://assets/laze_enemy/laze_enemy_2.png" id="5_1wc0g"]
+[ext_resource type="Texture2D" uid="uid://bqs6kgyxco2nh" path="res://assets/laze_enemy/laze_enemy_3.png" id="6_uyk0m"]
+[ext_resource type="Texture2D" uid="uid://dusgpi74cpon8" path="res://assets/laze_enemy/laze_enemy_4.png" id="7_6yryv"]
+[ext_resource type="Texture2D" uid="uid://c20kadl2y51dn" path="res://assets/laze_enemy/laze_enemy_5.png" id="8_obqaj"]
+[ext_resource type="Texture2D" uid="uid://by15umqsya63q" path="res://assets/health-bar/sprite_0.png" id="9_b3qoo"]
+[ext_resource type="Texture2D" uid="uid://cxmtmm12uwrx7" path="res://assets/health-bar/sprite_1.png" id="10_g2e1w"]
+[ext_resource type="AudioStream" uid="uid://crlh50g3ybb4u" path="res://assets/audio/damaged_2.wav" id="11_t72xo"]
+[ext_resource type="AudioStream" uid="uid://82bqlxewqso1" path="res://assets/audio/small_explosion.wav" id="12_mnc27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gqh8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5ag8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1wc0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uyk0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6yryv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_obqaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6yryv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uyk0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1wc0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5ag8j")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Laze_Enemy" type="CharacterBody2D" unique_id=677849875]
+collision_layer = 2
+script = ExtResource("1_inkma")
+indicator = ExtResource("2_o0xun")
+bullet_scene = ExtResource("3_2hdfn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=277779580]
+position = Vector2(-2, 0)
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_gqh8t")
+frame_progress = 0.5577844
+
+[node name="Area2D" type="Area2D" parent="." unique_id=580101499]
+
+[node name="HitBox" type="CollisionPolygon2D" parent="Area2D" unique_id=142677993]
+polygon = PackedVector2Array(0, 0, 0, -28, -3, -28, -9, -31, -11, -31, -11, -5, -17, 5, -20, 6, -21, 4, -23, 6, -26, 4, -28, 6, -31, 4, -33, 6, -36, 4, -38, 6, -42, 10, -42, 13, -39, 16, -38, 18, -35, 16, -32, 18, -30, 16, -27, 18, -25, 16, -22, 18, -19, 16, -17, 16, -13, 21, -9, 30, -9, 39, -7, 40, -6, 40, -5, 39, -5, 34, -4, 32, 1, 32, 1, 39, 1, 40, 4, 40, 5, 39, 5, 31, 6, 28, 7, 25, 8, 22, 14, 16, 16, 16, 17, 18, 19, 16, 22, 18, 24, 16, 27, 18, 30, 16, 32, 18, 35, 16, 38, 13, 38, 10, 35, 6, 33, 4, 31, 6, 28, 4, 26, 6, 23, 4, 21, 6, 18, 4, 15, 6, 13, 5, 7, -4, 7, -31, 5, -31, 0, -28)
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=394445777]
+offset_left = -16.0
+offset_top = -59.0
+offset_right = 16.0
+offset_bottom = -27.0
+texture_under = ExtResource("9_b3qoo")
+texture_progress = ExtResource("10_g2e1w")
+
+[node name="HitBox" type="CollisionPolygon2D" parent="." unique_id=1326589325]
+polygon = PackedVector2Array(0, 0, 0, -28, -3, -28, -9, -31, -11, -31, -11, -5, -17, 5, -20, 6, -21, 4, -23, 6, -26, 4, -28, 6, -31, 4, -33, 6, -36, 4, -38, 6, -42, 10, -42, 13, -39, 16, -38, 18, -35, 16, -32, 18, -30, 16, -27, 18, -25, 16, -22, 18, -19, 16, -17, 16, -13, 21, -9, 30, -9, 39, -7, 40, -6, 40, -5, 39, -5, 34, -4, 32, 1, 32, 1, 39, 1, 40, 4, 40, 5, 39, 5, 31, 6, 28, 7, 25, 8, 22, 14, 16, 16, 16, 17, 18, 19, 16, 22, 18, 24, 16, 27, 18, 30, 16, 32, 18, 35, 16, 38, 13, 38, 10, 35, 6, 33, 4, 31, 6, 28, 4, 26, 6, 23, 4, 21, 6, 18, 4, 15, 6, 13, 5, 7, -4, 7, -31, 5, -31, 0, -28)
+
+[node name="EnemyFireRate" type="Timer" parent="." unique_id=993764385]
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="." unique_id=1748131088]
+stream = ExtResource("11_t72xo")
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="." unique_id=1408455944]
+stream = ExtResource("12_mnc27")
+pitch_scale = 2.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="EnemyFireRate" to="." method="_on_enemy_fire_rate_timeout"]

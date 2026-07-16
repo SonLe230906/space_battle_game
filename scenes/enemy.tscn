@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dcakkvt2af721"]
+
+[ext_resource type="Script" uid="uid://by4l5dydj0on0" path="res://scripts/enemy.gd" id="1_w8i8w"]
+[ext_resource type="PackedScene" uid="uid://v4jx3bdyy2ga" path="res://scenes/indicator.tscn" id="2_otmr2"]
+[ext_resource type="PackedScene" uid="uid://bangej362l1yj" path="res://scenes/bullet.tscn" id="3_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://b087c7po8t6sl" path="res://assets/enemy_plane/enemy-plane-1.png" id="4_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://dlvnuyur5jk67" path="res://assets/enemy_plane/enemy-plane-2.png" id="5_g0wcc"]
+[ext_resource type="Texture2D" uid="uid://cayoi62q563t" path="res://assets/enemy_plane/enemy-plane-3.png" id="6_s1ycm"]
+[ext_resource type="Texture2D" uid="uid://6sl4xyqookt" path="res://assets/enemy_plane/enemy-plane-4.png" id="7_shcg2"]
+[ext_resource type="Texture2D" uid="uid://by15umqsya63q" path="res://assets/health-bar/sprite_0.png" id="8_ile5s"]
+[ext_resource type="Texture2D" uid="uid://cxmtmm12uwrx7" path="res://assets/health-bar/sprite_1.png" id="9_1x4g4"]
+[ext_resource type="AudioStream" uid="uid://crlh50g3ybb4u" path="res://assets/audio/damaged_2.wav" id="10_2pwtc"]
+[ext_resource type="AudioStream" uid="uid://82bqlxewqso1" path="res://assets/audio/small_explosion.wav" id="11_rogs8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sm75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_j0cyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g0wcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s1ycm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_shcg2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=944351015]
+z_index = 4000
+collision_layer = 2
+script = ExtResource("1_w8i8w")
+indicator = ExtResource("2_otmr2")
+bullet_scene = ExtResource("3_wtq4b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1118310663]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_8sm75")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1297911125]
+scale = Vector2(2.5, 2.5)
+
+[node name="HitBox" type="CollisionPolygon2D" parent="Area2D" unique_id=241033233]
+scale = Vector2(0.39999998, 0.39999998)
+polygon = PackedVector2Array(0, 0, 0, -40, -3, -40, -14, -28, -18, -28, -18, -26, -20, -25, -20, -23, -27, -23, -35, -14, -30, -9, -33, -1, -32, 0, -27, -5, -24, -2, -28, 3, -27, 8, -25, 8, -24, 6, -22, 5, -22, 0, -18, 3, -18, 10, -2, 25, 2, 25, 17, 10, 18, 3, 21, 0, 28, 5, 31, 4, 23, -3, 26, -6, 32, 0, 32, -4, 28, -7, 36, -14, 27, -23, 21, -23, 17, -28, 13, -28, 3, -40, 0, -40, -3, -41, 0, -39)
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1210595604]
+offset_left = -16.0
+offset_top = -64.0
+offset_right = 24.0
+offset_bottom = -24.0
+texture_under = ExtResource("8_ile5s")
+texture_progress = ExtResource("9_1x4g4")
+
+[node name="HitBox" type="CollisionPolygon2D" parent="." unique_id=172893314]
+polygon = PackedVector2Array(0, 0, 0, -40, -3, -40, -14, -28, -18, -28, -18, -26, -20, -25, -20, -23, -27, -23, -35, -14, -30, -9, -33, -1, -32, 0, -27, -5, -24, -2, -28, 3, -27, 8, -25, 8, -24, 6, -22, 5, -22, 0, -18, 3, -18, 10, -2, 25, 2, 25, 17, 10, 18, 3, 21, 0, 28, 5, 31, 4, 23, -3, 26, -6, 32, 0, 32, -4, 28, -7, 36, -14, 27, -23, 21, -23, 17, -28, 13, -28, 3, -40, 0, -40, -3, -41, 0, -39)
+
+[node name="EnemyFireRate" type="Timer" parent="." unique_id=1468116635]
+wait_time = 2.5
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="." unique_id=573182849]
+stream = ExtResource("10_2pwtc")
+
+[node name="Explode" type="AudioStreamPlayer2D" parent="." unique_id=121492078]
+stream = ExtResource("11_rogs8")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="EnemyFireRate" to="." method="_on_enemy_fire_rate_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bangej362l1yj"]
+
+[ext_resource type="Script" uid="uid://cdpugy55l8tov" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://xedlxqwt4vrk" path="res://assets/bullet/bullet.png" id="2_l5glv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8sm75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l5glv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqh8t"]
+radius = 2.0
+height = 12.0
+
+[node name="Bullet" type="Area2D" unique_id=1021674969]
+script = ExtResource("1_y25gk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1220274482]
+position = Vector2(0.5, 0)
+scale = Vector2(0.96875, 1)
+sprite_frames = SubResource("SpriteFrames_8sm75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=144291432]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_gqh8t")

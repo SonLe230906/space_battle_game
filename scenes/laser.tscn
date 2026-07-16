@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bw18ywgdgvq2x"]
+
+[ext_resource type="Script" uid="uid://c2du06jtcvw5x" path="res://scripts/laser.gd" id="1_a7dhc"]
+[ext_resource type="Texture2D" uid="uid://lkknpeluvayd" path="res://assets/bullet/laser.png" id="2_jjj73"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17hc2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jjj73")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usf7v"]
+size = Vector2(60, 1080)
+
+[node name="Laser" type="Area2D" unique_id=830210645]
+scale = Vector2(1, 0.85)
+script = ExtResource("1_a7dhc")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=62808742]
+sprite_frames = SubResource("SpriteFrames_17hc2")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346575050]
+position = Vector2(28.000002, 538.8235)
+shape = SubResource("RectangleShape2D_usf7v")
+
+[node name="Timer" type="Timer" parent="." unique_id=1811479770]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

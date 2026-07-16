@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bchnrbrho0pe7"]
+
+[ext_resource type="Script" uid="uid://bx743u0clir" path="res://scripts/boss_1.gd" id="1_p7pij"]
+[ext_resource type="PackedScene" uid="uid://bangej362l1yj" path="res://scenes/bullet.tscn" id="2_2tpq1"]
+[ext_resource type="Texture2D" uid="uid://cc5ha1lmsxxkt" path="res://assets/boss/boss-1.png" id="2_mgxgb"]
+[ext_resource type="PackedScene" uid="uid://dfitw5gcqhrk3" path="res://scenes/laze_bullet.tscn" id="3_3b75m"]
+[ext_resource type="Texture2D" uid="uid://b453waok6y10x" path="res://assets/boss/boss-2.png" id="3_iv5oi"]
+[ext_resource type="PackedScene" uid="uid://bw18ywgdgvq2x" path="res://scenes/laser.tscn" id="4_0hsuw"]
+[ext_resource type="Texture2D" uid="uid://c63inw8c5r010" path="res://assets/boss/boss-3.png" id="4_o831q"]
+[ext_resource type="PackedScene" uid="uid://dkq66toewts30" path="res://scenes/warning_area.tscn" id="5_mq0xc"]
+[ext_resource type="PackedScene" uid="uid://v4jx3bdyy2ga" path="res://scenes/indicator.tscn" id="6_k5gbq"]
+[ext_resource type="AudioStream" uid="uid://crlh50g3ybb4u" path="res://assets/audio/damaged_2.wav" id="9_vioas"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amonw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mgxgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iv5oi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o831q")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss_1" type="CharacterBody2D" unique_id=134338142]
+scale = Vector2(1.65, 1.65)
+collision_layer = 2
+script = ExtResource("1_p7pij")
+boss_bullet_1 = ExtResource("2_2tpq1")
+boss_bullet_2 = ExtResource("3_3b75m")
+laser_scene = ExtResource("4_0hsuw")
+warning_scene = ExtResource("5_mq0xc")
+indicator = ExtResource("6_k5gbq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=100132117]
+rotation = 3.1415927
+sprite_frames = SubResource("SpriteFrames_amonw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2029319740]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-1, -2, 0, -121, 39, -89, 47, -80, 58, -80, 57, -90, 72, -90, 72, -80, 99, -79, 100, -90, 116, -90, 115, -80, 136, -79, 141, -73, 145, -75, 147, -73, 146, -71, 148, -66, 151, -63, 154, -65, 156, -62, 154, -60, 159, -50, 161, -48, 162, -51, 166, -50, 165, -48, 165, -45, 171, -36, 175, -36, 177, -33, 175, -31, 183, -17, 187, -20, 187, -18, 186, -16, 194, -3, 201, -4, 198, 3, 208, 14, 212, 13, 212, 19, 215, 26, 139, 79, 95, 80, 89, 82, 38, 117, 22, 125, 0, 149, -2, 152, -4, 147, -25, 124, -96, 78, -141, 79, -217, 25, -214, 20, -216, 14, -212, 15, -202, 4, -203, -1, -201, -2, -196, -2, -189, -12, -194, -19, -188, -16, -179, -27, -181, -31, -178, -31, -169, -39, -173, -45, -167, -44, -161, -53, -162, -58, -156, -60, -146, -73, -147, -77, -140, -76, -138, -80, -119, -79, -119, -89, -106, -91, -104, -81, -76, -79, -76, -91, -60, -90, -60, -78, -51, -78, 1, -122)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1341459796]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1951399037]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(-1, -2, 0, -121, 39, -89, 47, -80, 58, -80, 57, -90, 72, -90, 72, -80, 99, -79, 100, -90, 116, -90, 115, -80, 136, -79, 141, -73, 145, -75, 147, -73, 146, -71, 148, -66, 151, -63, 154, -65, 156, -62, 154, -60, 159, -50, 161, -48, 162, -51, 166, -50, 165, -48, 165, -45, 171, -36, 175, -36, 177, -33, 175, -31, 183, -17, 187, -20, 187, -18, 186, -16, 194, -3, 201, -4, 198, 3, 208, 14, 212, 13, 212, 19, 215, 26, 139, 79, 95, 80, 89, 82, 38, 117, 22, 125, 0, 149, -2, 152, -4, 147, -25, 124, -96, 78, -141, 79, -217, 25, -214, 20, -216, 14, -212, 15, -202, 4, -203, -1, -201, -2, -196, -2, -189, -12, -194, -19, -188, -16, -179, -27, -181, -31, -178, -31, -169, -39, -173, -45, -167, -44, -161, -53, -162, -58, -156, -60, -146, -73, -147, -77, -140, -76, -138, -80, -119, -79, -119, -89, -106, -91, -104, -81, -76, -79, -76, -91, -60, -90, -60, -78, -51, -78, 1, -122)
+
+[node name="EnemyFireRate" type="Timer" parent="." unique_id=1853899484]
+
+[node name="Label" type="Label" parent="." unique_id=157123395]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="HealingDelay" type="Timer" parent="." unique_id=316145289]
+wait_time = 3.0
+
+[node name="LaserPhase" type="Timer" parent="." unique_id=1490040224]
+wait_time = 16.0
+
+[node name="LaserSpawn" type="Timer" parent="." unique_id=1621098280]
+wait_time = 2.25
+
+[node name="ChangeBullet" type="Timer" parent="." unique_id=310058670]
+wait_time = 4.0
+
+[node name="Damaged" type="AudioStreamPlayer2D" parent="." unique_id=20888355]
+stream = ExtResource("9_vioas")
+
+[node name="WarningAreaTimer" type="Timer" parent="." unique_id=483545506]
+wait_time = 2.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="EnemyFireRate" to="." method="_on_enemy_fire_rate_timeout"]
+[connection signal="timeout" from="HealingDelay" to="." method="_on_healing_delay_timeout"]
+[connection signal="timeout" from="LaserPhase" to="." method="_on_laser_phase_timeout"]
+[connection signal="timeout" from="LaserSpawn" to="." method="_on_laser_spawn_timeout"]
+[connection signal="timeout" from="ChangeBullet" to="." method="_on_change_bullet_timeout"]
+[connection signal="timeout" from="WarningAreaTimer" to="." method="_on_warning_area_timer_timeout"]

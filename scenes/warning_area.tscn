@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dkq66toewts30"]
+
+[ext_resource type="Texture2D" uid="uid://d1lmfosfo52ud" path="res://assets/enemy_plane/red_area.png" id="1_hlxty"]
+
+[node name="WarningArea" type="Node2D" unique_id=2063315082]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=305658097]
+texture = ExtResource("1_hlxty")
+centered = false
