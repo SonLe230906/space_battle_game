@@ -1,12 +1,17 @@
-## README file
-
 # Description
 - Name: Space Battle Game
 - Author: Son Le
 - Email: lemson06@gmail.com
-- This is my first game project.
+- This is my first game project built by Godot Engine.
 
 # How to play
-- Move: W (up) A (left) S (down) D (right) or arrow keys
-- There are no limit of waves, the longer player gets, the harder the game becomes.
-- Objectives: Achieve the highest possible points, and coins to upgrade stats to achieve further waves. There will be a boss (maybe there will be more bosses in the future) in each 10 waves.
+- Move: W (up) A (left) S (down) D (right) or arrow keys.
+- There is no limit to the waves: the longer the player survives, the harder the game becomes.
+- Objectives: Achieve the highest possible score and and collect as many coins as possible to upgrade your stats and achieve higher waves. There will be a boss (more bosses in the future updates) every 10 waves.
+
+# How to run
+- Step 1: Open Godot Engine and load the project folder.
+- Step 2: Press F5 or click the play button to run the game.
+
+# Language used: 
+- GDScript
