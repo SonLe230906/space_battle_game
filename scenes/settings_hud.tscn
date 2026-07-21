@@ -68,10 +68,10 @@ icon = ExtResource("4_0bd2s")
 
 [node name="Label" type="Label" parent="Difficulty" unique_id=178557542]
 layout_mode = 0
-offset_left = 57.142868
-offset_top = 8.571426
-offset_right = 174.14287
-offset_bottom = 31.571426
+offset_left = 54.428574
+offset_top = 8.571
+offset_right = 171.42857
+offset_bottom = 31.571
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_0bd2s")

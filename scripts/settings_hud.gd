@@ -9,10 +9,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Difficulty/Label.text = "Difficulty: " + difficulty_text[main.difficulty]
-	$ShowIndicator/Label.text = "Show Indicator: " + mode[main.indicator_enabled]
-	$Sound/Label.text = "Sound: " + mode[main.sound_enabled]
-	
+	if (main.settings_data != null):
+		$Difficulty/Label.text = "Difficulty: " + difficulty_text[main.settings_data["difficulty"]]
+		$ShowIndicator/Label.text = "Show Indicator: " + mode[main.settings_data["indicator_enabled"]]
+		$Sound/Label.text = "Sound: " + mode[main.settings_data["sound_enabled"]]
+		
 	if Input.is_action_just_pressed("quit"):
 		_on_exit_pressed()
 	
@@ -22,21 +23,22 @@ func _process(delta: float) -> void:
 		$Difficulty.disabled = false
 	
 func _on_difficulty_pressed() -> void:
-	main.difficulty += 1
-	if (main.difficulty >= 3):
-		main.difficulty = 0
+	if (main.settings_data != null):
+		main.settings_data["difficulty"] += 1
+		if (main.settings_data["difficulty"] >= 3):
+			main.settings_data["difficulty"] = 0
 
 func _on_show_indicator_pressed() -> void:
-	if (main.indicator_enabled == false):
-		main.indicator_enabled = true
+	if (main.settings_data["indicator_enabled"] == false):
+		main.settings_data["indicator_enabled"] = true
 	else:
-		main.indicator_enabled = false
+		main.settings_data["indicator_enabled"] = false
 
 func _on_sound_pressed() -> void:
-	if (main.sound_enabled == false):
-		main.sound_enabled = true
+	if (main.settings_data["sound_enabled"] == false):
+		main.settings_data["sound_enabled"] = true
 	else:
-		main.sound_enabled = false
+		main.settings_data["sound_enabled"] = false
 
 func _on_exit_pressed() -> void:
 	if (get_tree().paused == true):
@@ -44,4 +46,3 @@ func _on_exit_pressed() -> void:
 	else:
 		get_tree().get_first_node_in_group("main")._enable_button()
 	queue_free()
-	

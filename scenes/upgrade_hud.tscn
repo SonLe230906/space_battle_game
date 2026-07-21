@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmx228wd171hb"]
 
-[ext_resource type="Script" uid="uid://b6nvalu7iode7" path="res://scripts/menu_hud.gd" id="1_78vby"]
+[ext_resource type="Script" uid="uid://b6nvalu7iode7" path="res://scripts/upgrade.gd" id="1_78vby"]
 [ext_resource type="FontFile" uid="uid://drp7tgfkv880r" path="res://assets/font/Press_Start_2P/PressStart2P-Regular.ttf" id="2_wngof"]
 [ext_resource type="Texture2D" uid="uid://b26s34hohpd7t" path="res://assets/upgrade-hud.png" id="3_6wufr"]
 [ext_resource type="Texture2D" uid="uid://cxr0gmjqhsn0t" path="res://assets/logo_upgrade/heart.png" id="4_qg4lh"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://utqtmpwimw0l" path="res://assets/audio/hover_2.wav" id="17_6wufr"]
 [ext_resource type="PackedScene" uid="uid://dgwwqv1bqydtj" path="res://scenes/button.tscn" id="18_imgpo"]
 [ext_resource type="AudioStream" uid="uid://bqwd13mowi3u3" path="res://assets/audio/failed.wav" id="19_imgpo"]
+[ext_resource type="AudioStream" uid="uid://b10wn6wd7ow4x" path="res://assets/audio/upgrade.wav" id="20_baqqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78vby"]
 size = Vector2(631, 883.9575)
@@ -191,14 +192,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node" type="Node" parent="HP" unique_id=557616612]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HP/Node" unique_id=740289833]
-position = Vector2(500, 281)
+position = Vector2(490, 281)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="HP_Label" type="Label" parent="HP/Node" unique_id=1191422732]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 172.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 195.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -238,14 +239,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node2" type="Node" parent="Fire_Rate" unique_id=549052890]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fire_Rate/Node2" unique_id=1604670643]
-position = Vector2(500, 181)
+position = Vector2(490, 181)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Fire_Rate/Node2" unique_id=2044907906]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 272.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 295.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -285,14 +286,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node3" type="Node" parent="Bullet_Damage" unique_id=1046990053]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bullet_Damage/Node3" unique_id=711209292]
-position = Vector2(500, 381)
+position = Vector2(490, 381)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Bullet_Damage/Node3" unique_id=1083324738]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 372.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 395.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -332,14 +333,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node4" type="Node" parent="Crit_Rate" unique_id=1979764638]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crit_Rate/Node4" unique_id=1851766588]
-position = Vector2(500, 481)
+position = Vector2(490, 481.00003)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Crit_Rate/Node4" unique_id=518425753]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 472.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 495.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -379,14 +380,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node5" type="Node" parent="Crit_Damage" unique_id=772899487]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crit_Damage/Node5" unique_id=798645027]
-position = Vector2(500, 581)
+position = Vector2(490, 581)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Crit_Damage/Node5" unique_id=954360075]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 572.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 595.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -426,14 +427,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node6" type="Node" parent="Speed" unique_id=1264020602]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Speed/Node6" unique_id=2121971211]
-position = Vector2(500, 681)
+position = Vector2(490, 681)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Speed/Node6" unique_id=984873455]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 672.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 695.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -474,14 +475,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node7" type="Node" parent="Healing_Rate" unique_id=1037293390]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Healing_Rate/Node7" unique_id=2115059695]
-position = Vector2(500, 781)
+position = Vector2(490, 781)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Healing_Rate/Node7" unique_id=639845349]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 772.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 795.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -523,14 +524,14 @@ icon = ExtResource("7_js7x3")
 [node name="Node8" type="Node" parent="Coin_Multiplier" unique_id=1412029814]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin_Multiplier/Node8" unique_id=722117481]
-position = Vector2(500, 881)
+position = Vector2(490, 881.00006)
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_01l6g")
 
 [node name="Label" type="Label" parent="Coin_Multiplier/Node8" unique_id=2117867898]
-offset_left = 520.0
+offset_left = 510.0
 offset_top = 872.0
-offset_right = 560.0
+offset_right = 550.0
 offset_bottom = 895.0
 theme_override_fonts/font = ExtResource("2_wngof")
 theme_override_font_sizes/font_size = 20
@@ -553,6 +554,9 @@ icon = ExtResource("16_ypsjw")
 [node name="Failed" type="AudioStreamPlayer2D" parent="." unique_id=1640320136]
 stream = ExtResource("19_imgpo")
 volume_db = 10.0
+
+[node name="Upgraded" type="AudioStreamPlayer2D" parent="." unique_id=2095953947]
+stream = ExtResource("20_baqqf")
 
 [connection signal="pressed" from="HP/HP_Button" to="." method="_on_hp_button_pressed"]
 [connection signal="pressed" from="Fire_Rate/Fire_Rate_Button" to="." method="_on_fire_rate_button_pressed"]

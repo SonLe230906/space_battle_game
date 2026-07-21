@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	if hide_health_bar:
 		$HealthBar.hide()
-	_on_enemy_fire_rate_timeout()
+	$EnemyFireRate.start()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,7 +67,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		$Damaged.play()
 
 func _show_indicator(number : float, text : String, color : Color):
-	if (get_tree().get_first_node_in_group("main").indicator_enabled == true):
+	if (get_tree().get_first_node_in_group("main").settings_data["indicator_enabled"] == true):
 		var damage_indicator = indicator.instantiate()
 		damage_indicator.label_name = text + str(int(number))
 		damage_indicator.color_name = color

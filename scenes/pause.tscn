@@ -91,9 +91,10 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("7_jg8ls")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Continue"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SettingButton" parent="." unique_id=1109008136 instance=ExtResource("4_bwtow")]
 z_index = 4096
@@ -123,9 +124,10 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("7_jg8ls")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Settings"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="QuitButton" parent="." unique_id=1379035429 instance=ExtResource("4_bwtow")]
 z_index = 4096
@@ -155,9 +157,10 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("7_jg8ls")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Quit"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]

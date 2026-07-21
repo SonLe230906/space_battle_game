@@ -53,15 +53,13 @@ var collectable_rate = [0.04, 0.06, 0.1, 0.3, 0.5]
 
 var player = null
 
-var difficulty = 0
+@export var settings_data = {
+	"difficulty" : 1,
+	"indicator_enabled" : true,
+	"sound_enabled" : true
+}
 var power_difficulty = [0.5,1,1.5]
 var current_stat_multiplier = power_difficulty[0]
-var indicator_enabled = true
-var sound_enabled = true
-var sprite_velocity_1 = 0.5
-var sprite_velocity_2 = 0.5
-var rotation_velocity_1 = -0.000897
-var rotation_velocity_2 = 0.001997
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.modulate.a = 0
@@ -72,7 +70,11 @@ func _ready() -> void:
 	$Settings.sound = 1
 	$Exit.sound = 1
 	$PauseButton.sound = 2
-	_read_file()
+	if (_read_file("user://player.dat") != null):
+		player_loaded_data = _read_file("user://player.dat")
+		
+	if (_read_file("user://settings.dat") != null):	
+		settings_data = _read_file("user://settings.dat")
 	add_to_group("main")
 	$AnnouncementLabel.hide()
 	$Play.add_to_group("animation_button")
@@ -97,6 +99,7 @@ func new_game() -> void:
 	player.add_to_group("player")
 	add_child(player)
 	enemy_number = [2,0,0,0]
+	is_waiting = false
 	$GameTitle.hide()
 	$Play.hide()
 	$Upgrade.hide()
@@ -126,17 +129,20 @@ func new_game() -> void:
 	count_enemy = enemy_remaining
 	temp_enemy_spawn = enemy_remaining
 	started = true
-func _read_file() -> void:
-	var file = FileAccess.open("res://player.json", FileAccess.READ)
+func _read_file(path : String):
+	var file = FileAccess.open(path, FileAccess.READ)
+	var return_data
 	var json = new()
 	if (file != null && file.get_as_text() != ""):
-		player_loaded_data = JSON.parse_string(file.get_as_text())
+		return_data = JSON.parse_string(file.get_as_text())
 		file.close()
-	
+	else:
+		print(path, " isn't exist!")
+	return return_data
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	current_stat_multiplier = power_difficulty[difficulty] * pow(1.2, int(wave_count) / int(10))
-	
+	if (settings_data != null):
+		current_stat_multiplier = power_difficulty[settings_data["difficulty"]] * pow(1.2, int(wave_count) / int(10))
 	if (player != null):
 		$NumberOfCoins.text = str(int(player.player_data["coins"]))
 	else:
@@ -209,7 +215,9 @@ func _process(delta: float) -> void:
 					score -= score_deducted
 				count_enemy -= 1
 				enemy_escape += 1
-				
+				var tween = create_tween()
+				tween.tween_property($EnemyEscape, "modulate", Color('RED'), 0.25)
+				tween.tween_property($EnemyEscape, "modulate", Color(1,1,1,1), 0.25)
 			enemy.queue_free()
 	
 	for collectable in get_tree().get_nodes_in_group("item_collectable"):
@@ -249,7 +257,6 @@ func _process(delta: float) -> void:
 	$WaveCount.text = "Wave: " + str(wave_count)
 	$EnemyRemaining.text = "Remaining: " + str(count_enemy)
 	$EnemyEscape.text = "Escape: " + str(enemy_escape) + "/5" 
-	
 	if count_enemy == 0 && is_waiting == false:
 		if ((wave_count + 1) % 10 != 0):
 			$Wave_Delay.start()
@@ -276,19 +283,19 @@ func _process(delta: float) -> void:
 		get_tree().call_group("pause", "queue_free")
 		game_over()
 		
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), !sound_enabled)
+	if (settings_data != null):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), !settings_data["sound_enabled"])
 
 func _on_enemy_spawn_timeout() -> void:
 	counter = randi_range(0, 3)
 	while (temp_enemy_spawn != 0 && enemy_number[counter] == 0):
-		print(counter)
 		counter = randi_range(0, 3)
 	if (count_enemy > 0 && get_tree().get_nodes_in_group("enemy").size() != count_enemy):
 		if enemy_number[counter] > 0:
 			var enemy = enemy_loaded[counter].instantiate()
 			var enemy_position_x = randf_range(40, 685)
 			enemy.position.x = enemy_position_x
-			enemy.position.y = 0
+			enemy.position.y = -15
 			enemy.power_multiplier = current_stat_multiplier
 			enemy.add_to_group("enemy")
 			add_child(enemy)
@@ -367,12 +374,16 @@ func _on_play_pressed() -> void:
 	new_game()
 
 func _on_exit_pressed() -> void:
-	var save_file = FileAccess.open("res://player.json", FileAccess.WRITE)
-	var json = JSON.new()
-	save_file.store_string(JSON.stringify(player_loaded_data))
-	save_file.close()		
-	get_tree().quit()
+	_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 
+func _save_data(path : String, save_var):
+	var save_file = FileAccess.open(path, FileAccess.WRITE)
+	var json = JSON.new()
+	if (save_file):
+		save_file.store_string(JSON.stringify(save_var))
+		save_file.close()
+	else:
+		print(path, " isn't exist!")
 func _on_upgrade_pressed() -> void:
 	_disable_button()
 	var upgrade_menu_hud = upgrade_menu.instantiate()
@@ -432,7 +443,7 @@ func _on_return_speed_timeout() -> void:
 	player.player_data["speed"] = player_loaded_data["speed"]
 	
 func _show_indicator(number : float, text : String, text_2 : String, color : Color) -> Area2D:
-	if (indicator_enabled == true):
+	if (settings_data["indicator_enabled"] == true):
 		var an_indicator = indicator.instantiate()
 		an_indicator.label_name = text
 		if (number != 0):
@@ -490,3 +501,9 @@ func _disable_button() -> void:
 	$Upgrade.disabled = true
 	$Settings.disabled = true
 	$Exit.disabled = true
+
+func _notification(what: int) -> void:
+	if (what == NOTIFICATION_WM_CLOSE_REQUEST):
+		get_tree().quit()
+		_save_data("user://player.dat", player_loaded_data)
+		_save_data("user://settings.dat", settings_data)

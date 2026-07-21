@@ -64,14 +64,14 @@ func _on_area_entered(area: Area2D) -> void:
 		_show_indicator(damage_dealt, "- ", Color.RED)
 		$Damaged_1.play()
 func _show_indicator(number : float, text : String, color : Color) -> void:
-	if (get_tree().get_first_node_in_group("main").indicator_enabled == true):
+	if (get_tree().get_first_node_in_group("main").settings_data["indicator_enabled"] == true):
 		var new_indicator = indicator.instantiate()
 		new_indicator.label_name = text + str(int(number))
 		new_indicator.color_name = color
 		add_child(new_indicator)
 	
 func _on_healing_timer_timeout() -> void:
-	if (current_HP < player_data["MAX_HP"]):
+	if (current_HP < player_data["MAX_HP"] && player_data["healing_rate"] > 0):
 		current_HP += player_data["healing_rate"]
 		_show_indicator(player_data["healing_rate"], "+ ", Color.GREEN)
 	$Healing_Timer.start()

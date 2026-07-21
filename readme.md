@@ -2,7 +2,8 @@
 - Name: Space Battle Game
 - Author: Son Le
 - Email: lemson06@gmail.com
-- This is my first game project built by Godot Engine.
+- This is my game project made with Godot Engine.
+- Current version: 1.0.1
 
 # How to play
 - Move: W (up) A (left) S (down) D (right) or arrow keys.

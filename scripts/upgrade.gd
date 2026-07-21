@@ -63,6 +63,7 @@ func _on_hp_button_pressed() -> void:
 		player_data["coins"] -= required_coins["HP"]
 		player_data["upgraded"][0] += 1
 		_update_stat($HP/HP_Upgrade_Bar, "HP", $HP/HP_Button, $HP/Node/HP_Label, 0)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($HP/Node/HP_Label)
 func _on_fire_rate_button_pressed() -> void:
@@ -71,6 +72,7 @@ func _on_fire_rate_button_pressed() -> void:
 		player_data["coins"] -= required_coins["fire_rate"]
 		player_data["upgraded"][1] += 1
 		_update_stat($Fire_Rate/Fire_Rate_Upgrade_Bar, "fire_rate", $Fire_Rate/Fire_Rate_Button, $Fire_Rate/Node2/Label, 1)
+		$Upgraded.play()
 	else:	
 		_not_enough_coins($Fire_Rate/Node2/Label)
 func _on_bullet_damage_button_pressed() -> void:
@@ -79,6 +81,7 @@ func _on_bullet_damage_button_pressed() -> void:
 		player_data["coins"] -= required_coins["bullet_damage"]
 		player_data["upgraded"][2] += 1
 		_update_stat($Bullet_Damage/Bullet_Damage_Upgrade_Bar, "bullet_damage", $Bullet_Damage/Bullet_Damage_Button, $Bullet_Damage/Node3/Label, 2)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($Bullet_Damage/Node3/Label)
 func _on_crit_rate_button_pressed() -> void:
@@ -87,6 +90,7 @@ func _on_crit_rate_button_pressed() -> void:
 		player_data["coins"] -= required_coins["crit_rate"]
 		player_data["upgraded"][3] += 1
 		_update_stat($Crit_Rate/Crit_Rate_Upgrade_Bar, "crit_rate", $Crit_Rate/Crit_Rate_Button, $Crit_Rate/Node4/Label, 3)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($Crit_Rate/Node4/Label)
 func _on_crit_damage_button_pressed() -> void:
@@ -95,6 +99,7 @@ func _on_crit_damage_button_pressed() -> void:
 		player_data["coins"] -= required_coins["crit_damage"]
 		player_data["upgraded"][4] += 1
 		_update_stat($Crit_Damage/Crit_Damage_Upgrade_Bar, "crit_damage", $Crit_Damage/Crit_Damage_Button, $Crit_Damage/Node5/Label, 4)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($Crit_Damage/Node5/Label)
 func _on_speed_button_pressed() -> void:
@@ -103,6 +108,7 @@ func _on_speed_button_pressed() -> void:
 		player_data["coins"] -= required_coins["speed"]
 		player_data["upgraded"][5] += 1
 		_update_stat($Speed/Speed_Upgrade_Bar, "speed", $Speed/Speed_Button, $Speed/Node6/Label, 5)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($Speed/Node6/Label)
 func _on_healing_rate_button_pressed() -> void:
@@ -111,6 +117,7 @@ func _on_healing_rate_button_pressed() -> void:
 		player_data["coins"] -= required_coins["healing_rate"]
 		player_data["upgraded"][6] += 1
 		_update_stat($Healing_Rate/Healing_Rate_Upgrade_Bar, "healing_rate", $Healing_Rate/Healing_Rate_Button, $Healing_Rate/Node7/Label, 6)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($Healing_Rate/Node7/Label)
 func _on_coin_multiplier_button_pressed() -> void:
@@ -119,6 +126,7 @@ func _on_coin_multiplier_button_pressed() -> void:
 		player_data["coins"] -= required_coins["coin_multiplier"]
 		player_data["upgraded"][7] += 1
 		_update_stat($Coin_Multiplier/Coin_Multiplier_Upgrade_Bar, "coin_multiplier", $Coin_Multiplier/Coin_Multiplier_Button, $Coin_Multiplier/Node8/Label, 7)
+		$Upgraded.play()
 	else:
 		_not_enough_coins($Coin_Multiplier/Node8/Label)
 func _not_enough_coins(label : Label) -> void:
